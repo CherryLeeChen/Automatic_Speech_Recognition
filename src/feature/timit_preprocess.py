@@ -63,9 +63,10 @@ for subdir, dirs, files in os.walk(rootdir):
     	        phenome = []
                 with open(labelFilename,'r') as f:
 		    for line in f.read().splitlines():
-			s=line.split(' ')[2]
-			p_index = phn.index(s)
-			phenome.append(p_index)
+			if s!='h#':
+			    s=line.split(' ')[2]
+			    p_index = phn.index(s)
+			    phenome.append(p_index)
 		print phenome
 		phenome = np.array(phenome)
 		t_f = label_dir + filenameNoSuffix.split('/')[-2]+'-'+filenameNoSuffix.split('/')[-1]+'.npy'
